@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.username.label }}
+    {{ form.username }}
+    <br>
+    {{ form.email.label }}
+    {{ form.email }}
+
+    <br>
+    {{ form.password.label }}
+    {{ form.password }}
+
+    <br>
+    {{ form.confirm_password.label }}
+    {% if form.confirm_password.errors %}
+        {{ form.confirm_password }}
+            {% for error in form.confirm_password.errors %}
+                <br>{{ error }}</br>
+            {% endfor %}
+        {% else %}
+        {{ form.confirm_password }}
+{% endif %}
+  
+    <br><input type='submit' name='submit button' value = 'Send!'></input></br>
+</form>
+{% endblock %}
